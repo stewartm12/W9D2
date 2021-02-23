@@ -1,25 +1,32 @@
-const MovingObject = function(pos, vel, radius, color) { 
-  this.pos = pos;
-  this.vel = vel;
-  this.radius = radius;
-  this.color = color;
+const MovingObject = function(options) { 
+  this.pos = options.pos;
+  this.vel = options.vel;
+  this.radius = options.radius;
+  this.color = options.color;
 }
 
 MovingObject.prototype.draw = function(ctx) {
   // const canvas = document.getElementById("canvas");
   // const ctx = 
-  const x = 250 / 2;
-  const y = 250 / 2;
-  const radius = 100;
+  const x = this.pos[0];
+  const y = this.pos[1];
+  const radius = this.radius;
   ctx.lineWidth = 5;
   ctx.strokeStyle = "white";
 
   ctx.beginPath();
   ctx.arc(x,y,radius,0,2*Math.PI);
-  ctx.fillStyle = "red";
+  ctx.fillStyle = this.color;
   ctx.fill();
   ctx.stroke();
   ctx.closePath();
+}
+
+MovingObject.prototype.move = function() {
+  let [x, y] = this.pos;
+  let [a, b] = this.vel;
+
+  this.pos = [x + a, y + b];
 }
 
 module.exports = MovingObject;
