@@ -18,11 +18,12 @@ Game.prototype.randomPosition = function() {
 Game.prototype.addAsteroids = function() {
   this.asteroid.push(new Asteroid({pos: [100, 100], vel: [0, 0], radius: 50, color: "black"}));
   this.asteroid.push(new Asteroid({pos: [200, 200], vel: [0, 0], radius: 50, color: "cyan"}));
+  let that = this;
 
   for(let i = 0; i < Game.NUM_ASTEROIDS; i++){
       let position = this.randomPosition();
       let length = Math.random() * 10;
-      this.asteroid.push(new Asteroid({pos: position,vel: Util.randomVec(length)}));
+      this.asteroid.push(new Asteroid({game: that, pos: position,vel: Util.randomVec(length)}));
   }
 }
 

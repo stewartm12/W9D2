@@ -5,6 +5,7 @@ const MovingObject = function(options) {
   this.vel = options.vel;
   this.radius = options.radius;
   this.color = options.color;
+  this.game = options.game; 
 }
 
 MovingObject.prototype.draw = function(ctx) {
@@ -41,8 +42,8 @@ MovingObject.prototype.isCollidedWith = function(otherObject) {
 }
 
 MovingObject.prototype.collideWith = function(otherObject) {
-  Game.remove(otherObject);
-  Game.remove(this);
+  this.game.remove(otherObject);
+  this.game.remove(this);
 }
 
 module.exports = MovingObject;
