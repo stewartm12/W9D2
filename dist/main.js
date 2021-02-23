@@ -93,7 +93,7 @@
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-eval("const MovingObject = __webpack_require__(/*! ./moving_object.js */ \"./src/moving_object.js\");\n\nwindow.MovingObject = MovingObject;\n\n//# sourceURL=webpack:///./src/index.js?");
+eval("const MovingObject = __webpack_require__(/*! ./moving_object.js */ \"./src/moving_object.js\");\n\n//window.MovingObject = MovingObject;\n\ndocument.addEventListener(\"DOMContentLoaded\",() => {\n    const canvas = document.getElementById('game-canvas');\n    const ctx = canvas.getContext('2d');\n    circle =  new MovingObject([20,20],[10,10],5,\"#00FF00\");\n    circle.draw(ctx);\n});\n\n//# sourceURL=webpack:///./src/index.js?");
 
 /***/ }),
 
@@ -104,7 +104,7 @@ eval("const MovingObject = __webpack_require__(/*! ./moving_object.js */ \"./src
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-eval("function MovingObject(pos, vel, radius, color) { \n  this.pos = pos;\n  this.vel = vel;\n  this.radius = radius;\n  this.color = color;\n}\n\nmodule.exports = MovingObject;\n\n//# sourceURL=webpack:///./src/moving_object.js?");
+eval("const MovingObject = function(pos, vel, radius, color) { \n  this.pos = pos;\n  this.vel = vel;\n  this.radius = radius;\n  this.color = color;\n}\n\nMovingObject.prototype.draw = function(ctx) {\n  // const canvas = document.getElementById(\"canvas\");\n  // const ctx = \n  const x = 250 / 2;\n  const y = 250 / 2;\n  const radius = 100;\n  ctx.lineWidth = 5;\n  ctx.strokeStyle = \"white\";\n\n  ctx.beginPath();\n  ctx.arc(x,y,radius,0,2*Math.PI);\n  ctx.fillStyle = \"red\";\n  ctx.fill();\n  ctx.stroke();\n  ctx.closePath();\n}\n\nmodule.exports = MovingObject;\n\n//# sourceURL=webpack:///./src/moving_object.js?");
 
 /***/ })
 
